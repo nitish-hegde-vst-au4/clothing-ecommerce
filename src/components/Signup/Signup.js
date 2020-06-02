@@ -14,8 +14,12 @@ class Signup extends Component {
     e.preventDefault();
     const { displayName, email, password, confirmPassword } = this.state;
     if (password !== confirmPassword) return alert('Password do not match!');
-    const { user } = await auth.createUserWithEmailAndPassword(email, password);
+
     try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
       await createProfileDocument(user, { displayName });
       this.setState({
         displayName: '',
