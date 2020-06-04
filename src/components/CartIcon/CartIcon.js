@@ -14,12 +14,9 @@ const CartIcon = ({ toggleCartDropdown, itemCount }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log('Called');
-  return {
-    itemCount: selectCartItemsCount(state),
-  };
-};
+const mapStateToProps = (state) => ({
+  itemCount: selectCartItemsCount(state),
+});
 const mapDispatchToProps = {
   toggleCartDropdown,
 };
