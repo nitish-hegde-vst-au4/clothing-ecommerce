@@ -16,7 +16,7 @@ class Signin extends Component {
       await auth.signInWithEmailAndPassword(email, password);
       this.setState({ email: '', password: '' });
     } catch (error) {
-      console.error(error);
+      console.error('Signin', error);
     }
   };
   handleChange = (e) => {
