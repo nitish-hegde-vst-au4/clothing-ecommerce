@@ -26,6 +26,8 @@ export const cart = (state = initialState, action) => {
           (cartItem) => cartItem.id !== action.payload.id
         ),
       };
+    case actionTypes.CLEAR_CART:
+      return { ...state, cartItems: [] };
     default:
       return state;
   }
