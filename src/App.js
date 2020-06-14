@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Homepage from './pages/Homepage/Homepage';
 import Shop from './pages/Shop/Shop';
 import Header from './components/Header/Header';
@@ -34,6 +34,7 @@ class App extends React.Component {
     this.unsubscribeUser();
   }
   render() {
+    const { currentUser } = this.props;
     return (
       <div>
         <Header />
@@ -44,8 +45,12 @@ class App extends React.Component {
           <Route
             exact
             path='/signin'
-            render={() =>
-              this.props.currentUser ? <Redirect to='/' /> : <SigninAndSignup />
+            render={(props) =>
+              currentUser ? (
+                props.history.goBack()
+              ) : (
+                <SigninAndSignup {...props} />
+              )
             }
           />
           ;
